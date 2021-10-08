@@ -18,6 +18,12 @@
 	</properties>
 	
 	<dependencies>
+		<!-- 스프링 부트 내장 웹 서버 Tomcat 의존성 추가 -->
+		<dependency> 
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+
 		<!-- Database를 사용하기 위한 JPA 의존성 추가 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
