@@ -16,31 +16,42 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	
 	<dependencies>
+		<!-- Database를 사용하기 위한 JPA 의존성 추가 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
+		<!-- 인증을 위한 Spring Security 의존성 추가 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
+		<!-- Database로 H2 데이터 베이스 사용 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!-- Lombok : Java의 라이브러리로 반복되는 메소드를 Annotation 을 사용해서 자동으로 작성해주는 라이브러리 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- Test코드를 실행하기 위한 의존성 추가 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Spring Secutiry 기능을 사용하기 위한 의존성 추가 -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
