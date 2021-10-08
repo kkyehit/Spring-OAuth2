@@ -12,3 +12,6 @@ spring:
   h2:
     console:
       enable: true
+  jpa:
+    hibernate:
+      ddl-auto: create # 실행할 때마다 Database 생성 
