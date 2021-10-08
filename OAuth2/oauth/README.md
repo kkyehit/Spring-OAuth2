@@ -20,4 +20,15 @@ $ curl client:secret@localhost:8080/oauth/token -d grant_type=password -d userna
 - 키가 없고 공개된 경우 security.oauth2.resource.jwt.key-uri를 사용하여 다운로드할 수 있는 URI("값" 필드가 있는 JSON 객체로)를 제공할 수 있습니다.
 
 
+### No Authorization Server Support
+- 2012년 10월에는 OAuth 2.0 인증 프레임워크인 RFC 6749가 게시되었습니다. 이후 2014년 5월 Spring Security OAuth는 Authorization Server, Resource Server 및 Client를 지원하는 2.0.0 버전을 출시했습니다. 이것은 OAuth 2.0 라이브러리와 제품이 없는 상황에서 매우 의미가 있었습니다.
+https://spring.io/blog/2019/11/14/spring-security-oauth-2-0-roadmap-update
+
+- Spring Security의 Authorization Server 지원은 결코 적합하지 않았습니다. Authorization Server는 제품을 빌드하기 위해 라이브러리가 필요합니다. 프레임워크인 Spring Security는 라이브러리나 제품을 구축하는 비즈니스가 아닙니다. 예를 들어, 우리는 JWT 라이브러리가 없지만 대신 Nimbus를 사용하기 쉽게 만듭니다. 또한 자체 SAML IdP, CAS 또는 LDAP 제품을 유지 관리하지 않습니다.
+
+- 2019년에는 상용 및 오픈 소스 인증 서버가 많이 있습니다. 따라서 Spring Security 팀은 더 이상 인증 서버에 대한 지원을 제공하지 않기로 결정했습니다.
+
+- 업데이트: Authorization Server를 지원하지 않기로 한 결정에 대한 의견을 보내주신 모든 분들께 감사드립니다. 이 피드백과 일부 내부 논의로 인해 이 결정을 다시 검토하고 있습니다. 진행 상황이 있으면 커뮤니티에 알립니다.
+
+
 https://docs.spring.io/spring-security-oauth2-boot/docs/2.1.0.M2/reference/htmlsingle/
