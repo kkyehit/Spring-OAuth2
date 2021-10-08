@@ -30,6 +30,20 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
+		<!-- Authorization Server를 만들기 위해 spring oauth2 autoconfiguration 의존성 추가-->
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+			<version>2.5.5</version>
+		</dependency>
+
+		<!-- JWT 토큰 사용 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-jwt</artifactId>
+			<version>1.1.1.RELEASE</version>
+		</dependency>
+
 		<!-- Database로 H2 데이터 베이스 사용 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
