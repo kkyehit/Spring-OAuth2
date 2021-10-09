@@ -30,6 +30,6 @@ public class SecurityConfigTest {
 		String clientSecret = "client_secret";
 		String credentials = clientId+":"+clientSecret;
 
-		System.out.println("\n\n###encoded Credentials Test (base64)###\n\n"+Base64.getEncoder().encode(credentials.getBytes())+"\n\n");
+		System.out.println("\n\n###encoded Credentials Test (base64)###\n\n"+Base64.getEncoder().encodeToString(credentials.getBytes())+"\n\n");
 	}
 }
