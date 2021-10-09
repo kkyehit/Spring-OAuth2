@@ -1,6 +1,5 @@
 package com.practise.oauth.repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.practise.oauth.model.imple.UserDetailsImpl;
