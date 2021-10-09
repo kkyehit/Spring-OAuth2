@@ -68,7 +68,7 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
     }
 
     /**
-     * 
+     * token 발듬 방식을 JWT 토큰 방식으로 변경한다.
      * @param endpoints
      * @throws Exception
      *  */    
