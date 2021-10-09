@@ -50,13 +50,21 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
             .scopes("read", "write");
     }
 
-
-    
+    /**
+     * 
+     * @param endpoints
+     * @throws Exception
+     *  */    
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager);
     }
 
+    /** 
+     * 
+     * @param security
+     * @throws Exception
+     */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         // 토큰유효성(/token/check_token) 접근을 위해 설정
