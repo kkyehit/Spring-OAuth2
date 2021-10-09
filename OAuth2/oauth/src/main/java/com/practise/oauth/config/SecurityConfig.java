@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 
@@ -31,7 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
      */
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return new Pbkdf2PasswordEncoder();
+        // return new Pbkdf2PasswordEncoder();
+        return NoOpPasswordEncoder.getInstance();
     }
 
     /**
@@ -44,19 +46,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
+        auth.inMemoryAuthentication()
+                .withUser("admin")
+                .password("admin")
+                .roles("USER");
     }
 
     /**
      * HttpSecurity : 리소스(URL)에 대한 접근 권한 설정 ( 특정한 경로에 특정한 권한을 가진 사용자만 접근할 수 있도록 설정 )
      * 
-     * 
+     * .csrf().disable()                                         : csrf 비활성화
+     * .headers().frameOptions().disable()                       : X-Frame-Options header 추가를 비활성화
+     * .authorizeRequests().antMatchers("/oauth/**").permitAll() : "/oauth/**" 대해 허용
+     * .formLogin()                                              : 로그인 기능 허용
+     * .httpBasic()                                              : resource에 대한 접근을 요청할때 브라우저가 사용자에게 username과 password를 확인해 인가를 제한
+     *                                                            요청 header에는 username과 password를 BASE64로 Encode한 값을 포함해야 한다. (Authorization: Basic <ENCODED VALUE>)
      * @param security
      * @throws Exception
      */
     @Override
     protected void configure(HttpSecurity security) throws Exception {
-
+        security
+                .csrf().disable()
+                .headers().frameOptions().disable()
+                .and()
+                    .authorizeRequests().antMatchers("/oauth/**").permitAll()
+                .and()
+                    .formLogin()
+                .and()
+                    .httpBasic();
     }
 
     /**
