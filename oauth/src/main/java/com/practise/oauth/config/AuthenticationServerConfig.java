@@ -85,13 +85,14 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
     }
 
     /** 
-     * 
+     * 토큰유효성(/token/check_token) 접근 허용
      * @param security
      * @throws Exception
      */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        // 토큰유효성(/token/check_token) 접근을 위해 설정
-        security.checkTokenAccess("permitAll()");
+        
+        security
+            .checkTokenAccess("permitAll()"); /// 토큰유효성(/token/check_token) 접근을 위해 설정
     }
 }
