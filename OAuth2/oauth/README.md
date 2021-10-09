@@ -5,7 +5,11 @@
 - 클라이언트는 메모리 내 저장소에 등록됩니다.
 - 다음 명령어를 통해 token을 얻을 수 있다.
 ```bash
-$ curl client:secret@localhost:8080/oauth/token -d grant_type=password -d username=user -d password=pwd
+$ curl client_id:client_secret@localhost:8080/oauth/token -d grant_type=authorization_code -d username=admin -d password=admin
+```
+브라우저에서 접속
+```
+http://localhost:8080/oauth/authorize?client_id=client_Id&response_type=code
 ```
 
 ### Resource Server
@@ -32,3 +36,28 @@ https://spring.io/blog/2019/11/14/spring-security-oauth-2-0-roadmap-update
 
 
 https://docs.spring.io/spring-security-oauth2-boot/docs/2.1.0.M2/reference/htmlsingle/
+
+
+### 실행
+- 브라우저에서 아래에 URL로 접속
+```
+http://localhost:8080/oauth/authorize?client_id=client_id&response_type=code
+```
+- 등록된 사용자 계정으로 접속하면 토큰을 얻을 수 있다 (admin/admin)
+
+
+- CMD에서 CURL 명령어 실행
+
+```
+curl -d grant_type=password -d username=admin -d password=admin -H "Authorization: Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=" -X POST http://localhost:8080/oauth/token
+```
+- String credentials = clientId + ":" + secret;
+- String encodedCredentials = new String(Base64.encode(credentials.getBytes()));
+- /oauth/token 을 호출할때 위에서 생성된 encodedCredentials 값을 Header 내 Authorization 에 넣어줘야 한다.
+
+결과
+```
+{"access_token":"GskCIpBGIoLJvRneTqffBER3s-E","token_type":"bearer","refresh_token":"65NkeA_k4EkWP2rFPnNUNoSZUgI","expires_in":43199,"scope":"read write"}
+```
+
+https://lemontia.tistory.com/927
