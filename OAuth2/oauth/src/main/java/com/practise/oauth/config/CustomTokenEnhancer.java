@@ -3,7 +3,6 @@ package com.practise.oauth.config;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
