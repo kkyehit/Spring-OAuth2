@@ -45,6 +45,7 @@ public class AuthenticationServerConfig extends AuthorizationServerConfigurerAda
         clients.inMemory()
             .withClient(CLINET_ID)
             .secret(CLINET_SECRET)
+            .redirectUris("http://localhost:8080/oauth2/callback")
             .authorizedGrantTypes("authorization_code", "password", "refresh_token")
             .scopes("read", "write");
     }
