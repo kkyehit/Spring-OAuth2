@@ -23,9 +23,9 @@ import lombok.Setter;
 @Entity(name = "user_tb")
 public class UserDetailsImpl implements UserDetails{
     /* UserDetails */
-    private String Username;
-    private String Password;
-    private String Authority;
+    private String username;
+    private String password;
+    private String authority;
     private boolean isEnabled;
     private boolean isAccountNonExpired;
     private boolean isAccountNonLocked;
@@ -35,13 +35,13 @@ public class UserDetailsImpl implements UserDetails{
     /* Custom */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long UserId;
+    private Long id;
     /* ****** */
 
     @Override
     public java.util.Collection<? extends org.springframework.security.core.GrantedAuthority> getAuthorities(){
         ArrayList<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
-        auth.add(new SimpleGrantedAuthority(Authority));
+        auth.add(new SimpleGrantedAuthority(authority));
         return auth;
     }
 }
