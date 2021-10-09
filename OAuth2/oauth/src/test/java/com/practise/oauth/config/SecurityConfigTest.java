@@ -20,7 +20,7 @@ public class SecurityConfigTest {
 
 		String rawPassword = "admin";
 
-		System.out.println(passwordEncoder.encode(rawPassword));
+		System.out.println("\n\n######\n\n"+passwordEncoder.encode(rawPassword)+"\n\n");
 	}
 
 	@Test
@@ -30,6 +30,6 @@ public class SecurityConfigTest {
 		String clientSecret = "client_secret";
 		String credentials = clientId+":"+clientSecret;
 
-		System.out.println(Base64.getEncoder().encode(credentials.getBytes()));
+		System.out.println("\n\n######\n\n"+Base64.getEncoder().encode(credentials.getBytes())+"\n\n");
 	}
 }
