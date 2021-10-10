@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.practise.article.model.ArticleModel;
 import com.practise.article.repository.ArticleRepository;
+import com.practise.article.service.board.BoardService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -19,10 +20,14 @@ public class ArticleService {
     @Autowired
     ArticleRepository articleRepository;
 
+    @Autowired
+    BoardService boardService;
+
     /**
      * 게시글 생성
      */
     public ArticleModel create(ArticleModel articleModel){
+        articleModel.setBoardName(boardService.getBoard(articleModel.getBoardId()).getBoardName());
         return articleRepository.save(articleModel);
     }
 

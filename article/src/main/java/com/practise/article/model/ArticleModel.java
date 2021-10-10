@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Transient;
+
+import com.practise.article.service.board.BoardService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
