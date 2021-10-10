@@ -34,8 +34,8 @@ public class ArticleController {
      */
     @ApiOperation(value = "게시글 생성", notes = "게시글을 생성한다.")
     @PostMapping("/")
-    public ArticleModel create(@RequestBody ArticleModel articleModel){
-        return articleService.create(articleModel);
+    public ArticleModel create(@RequestBody ArticleModel articleModel, HttpServletRequest request, HttpServletResponse response){
+        return articleService.create(articleModel, request.getHeader("Authorization"));
     }
 
     /**

@@ -26,8 +26,8 @@ public class ArticleService {
     /**
      * 게시글 생성
      */
-    public ArticleModel create(ArticleModel articleModel){
-        articleModel.setBoardName(boardService.getBoard(articleModel.getBoardId()).getBoardName());
+    public ArticleModel create(ArticleModel articleModel, String authorizationToken) {
+        articleModel.setBoardName(boardService.getBoard(articleModel.getBoardId(), authorizationToken).getBoardName());
         return articleRepository.save(articleModel);
     }
 

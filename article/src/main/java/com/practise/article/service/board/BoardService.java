@@ -25,12 +25,10 @@ public class BoardService {
     private final static String BOARD_PATH    = "/board/";                //  
 
     
-    public BoardModel getBoard(Long boardId) {
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSJdLCJleHAiOjE2MzM4OTU1NTIsImF1dGhvcml0aWVzIjpbIlVTRVIiXSwianRpIjoiY0xPVjNTZkIwTUZPTWxxbFdJMlgwQXFzUDA4IiwiY2xpZW50X2lkIjoiY2xpZW50X2lkIiwidXNlcm5hbWUiOiJhZG1pbiJ9.lVHWw8Tbm5vP0H_lhugibsIR7Lr_FPV0kZLA9sbaDi8";
-
+    public BoardModel getBoard(Long boardId, String authorizationToken) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.add("Authorization", "bearer  "+token);
+        headers.add("Authorization", authorizationToken);
         
         HttpEntity request = new HttpEntity(headers);
 
