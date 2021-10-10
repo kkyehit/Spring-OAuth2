@@ -35,7 +35,13 @@ public class ArticleController {
     @ApiOperation(value = "게시글 생성", notes = "게시글을 생성한다.")
     @PostMapping("/")
     public ArticleModel create(@RequestBody ArticleModel articleModel, HttpServletRequest request, HttpServletResponse response){
-        return articleService.create(articleModel, request.getHeader("Authorization"));
+        try {
+            return articleService.create(articleModel, request.getHeader("Authorization"));
+        } catch (NotFoundException e) {
+            // boardId에 해당하는 게시판이 없다면 NOT_FOUND 상태코드 반환
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return null;
+        }
     }
 
     /**

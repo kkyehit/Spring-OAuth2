@@ -25,8 +25,9 @@ public class ArticleService {
 
     /**
      * 게시글 생성
+     * @throws NotFoundException
      */
-    public ArticleModel create(ArticleModel articleModel, String authorizationToken) {
+    public ArticleModel create(ArticleModel articleModel, String authorizationToken) throws NotFoundException {
         articleModel.setBoardName(boardService.getBoard(articleModel.getBoardId(), authorizationToken).getBoardName());
         return articleRepository.save(articleModel);
     }
