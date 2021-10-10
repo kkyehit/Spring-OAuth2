@@ -41,3 +41,6 @@ https://spring.io/blog/2019/11/14/spring-security-oauth-2-0-roadmap-update
 
 
 https://docs.spring.io/spring-security-oauth2-boot/docs/2.1.0.M2/reference/htmlsingle/
+
+### Baeldung
+https://www.baeldung.com/spring-security-oauth-jwt-legacy
