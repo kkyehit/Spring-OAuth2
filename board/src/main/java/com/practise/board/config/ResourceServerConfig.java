@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
+import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.web.context.NullSecurityContextRepository;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
@@ -23,12 +24,32 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
     @Autowired
     TokenStore tokenStore;
 
+    /**jwt안쓰는 경우 */
+    // @Value("${security.oauth2.client.client-id}")
+    // private String clientId;
+
+    // @Value("${security.oauth2.client.client-secret}")
+    // private String clientSecret;
+
+    // @Value("${security.oauth2.resource.token-info-uri}")
+    // private String checkTokenEndpointUrl;
+    /*************** */
+
     /**
      * token store 지정
      */
     @Override
     public void configure(ResourceServerSecurityConfigurer resources){
         resources.tokenStore(tokenStore);
+        
+        /**jwt안쓰는 경우 */
+        // RemoteTokenServices remoteTokenService1 = new RemoteTokenServices();
+        // remoteTokenService1.setClientId(clientId);
+        // remoteTokenService1.setClientSecret(clientSecret);
+        // remoteTokenService1.setCheckTokenEndpointUrl(checkTokenEndpointUrl);
+
+        // resources.tokenServices(remoteTokenService1);
+        /*************** */
     }
 
     /**
@@ -45,8 +66,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
             .headers().frameOptions().disable()
             .and()
                 .authorizeRequests()
-                    .antMatchers("/oauth/**").permitAll()
-                    .antMatchers("/h2*/**").permitAll()
+                    .antMatchers("/board/*").access("#oauth2.hasScope('write')")
             .and()
                 .formLogin()
             .and()
