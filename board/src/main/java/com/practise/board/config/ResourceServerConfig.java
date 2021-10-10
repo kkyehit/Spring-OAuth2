@@ -66,7 +66,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
             .headers().frameOptions().disable()
             .and()
                 .authorizeRequests()
-                    .antMatchers("/board/*").access("#oauth2.hasScope('write')")
+                    .antMatchers("/board/*").access("#oauth2.hasScope('write')") // write 권한 확인
             .and()
                 .formLogin()
             .and()
