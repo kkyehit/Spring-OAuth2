@@ -2,6 +2,7 @@ package com.practise.board.controller;
 
 import java.util.List;
 
+
 import com.practise.board.model.BoardModel;
 import com.practise.board.service.BoardService;
 
