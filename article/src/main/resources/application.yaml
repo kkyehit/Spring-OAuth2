@@ -1,0 +1,32 @@
+
+# 포드 정보 입력
+server:
+  port: 8100
+
+# DataSource 설정 (h2)
+spring:
+  datasource:
+    url: jdbc:h2:mem:article
+    driverClassName: org.h2.Driver
+    username: sa
+    passsword:
+#    schema: classpath:sql/schema.sql
+#    data: classpath:sql/data.sql
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create 
+#      ddl-auto: none
+    database-platform: org.hibernate.dialect.H2Dialect
+  
+security:
+  oauth2:
+    # jwt를 안쓰는 경우 #
+    # client:
+    #   client-id: client-id
+    #   client-secret: client-secret
+    # resource:
+    #   token-info-uri: http:localhost:8080/oauth/check_token
